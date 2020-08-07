@@ -1,4 +1,13 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
+import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+
+const route = new Router();
+
+// Hello World!
+route.get("/", (ctx) => {
+  ctx.response.body = "Hello World!";
+}).get("/:id", (ctx) => {
+  ctx.response.body = "Content for " + ctx.params.id;
+});
 
 const app = new Application();
 
@@ -17,11 +26,8 @@ app.use(async (ctx, next) => {
   ctx.response.headers.set("X-Response-Time", `${ms}ms`);
 });
 
-// Hello World!
-app.use((ctx) => {
-  ctx.response.body = "Hello World!";
-});
-
+app.use(route.routes());
+app.use(route.allowedMethods());
 
 console.log("Listening on http://localhost:8000/");
 
