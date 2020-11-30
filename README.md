@@ -3,6 +3,7 @@
 [![deno version](https://img.shields.io/badge/deno-^1.5.2-lightgrey?logo=deno)](https://github.com/denoland/deno)
 [![GitHub license](https://img.shields.io/github/license/daemon1024/paste.land)](/LICENSE)
 [![paste.land Telegram Chat](https://img.shields.io/badge/chat-paste.land-blue?logo=telegram)](https://t.me/paste_land)
+[![GitHub Actions status](https://github.com/daemon1024/paste.land/workflows/deno/badge.svg?branch=master)](https://github.com//daemon1024/paste.land/actions)
 
 Paste tool made in deno
 
