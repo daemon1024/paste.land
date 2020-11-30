@@ -48,3 +48,7 @@ curl http://localhost:8000/<id>
 curl --data "My first paste" -H "Content-Type: text/plain" -X POST http://localhost:8000/
 ```
 
+## Contributing to the project
+
+Refer [CONTRIBUTING.md](/CONTRIBUTING.md)
+
