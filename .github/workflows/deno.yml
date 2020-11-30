@@ -16,21 +16,15 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
-
-    strategy:
-      matrix:
-        deno: ["v1.x", "nightly"]
-        os: [ubuntu-latest]
-
+    runs-on: ubuntu-latest
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
-
+        
       - name: Setup Deno
-        uses: denolib/setup-deno@c7d7968ad4a59c159a777f79adddad6872ee8d96
+        uses: denolib/setup-deno@v2
         with:
-          deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
+          deno-version: v1.x
 
       - name: Format check Deno Module
         run: deno fmt --check
