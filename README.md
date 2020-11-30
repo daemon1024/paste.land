@@ -1,3 +1,6 @@
+<img align="right" src=https://user-images.githubusercontent.com/47106543/100612012-442e4400-3338-11eb-8eac-38a222b029e7.png height="200px">
+
+
 # paste.land
 
 [![deno version](https://img.shields.io/badge/deno-^1.5.2-lightgrey?logo=deno)](https://github.com/denoland/deno)
