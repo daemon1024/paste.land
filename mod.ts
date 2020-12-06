@@ -8,7 +8,7 @@ interface Paste {
 const pastes = new Map<string, Paste>();
 
 function getId() {
-  let id = randomId();
+  const id = randomId();
   if (pastes.has(id)) getId();
   else return id;
 }

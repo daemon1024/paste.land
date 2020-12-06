@@ -1,4 +1,4 @@
-let characters =
+const characters =
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
 function randomId(length?: number): string {
@@ -6,7 +6,7 @@ function randomId(length?: number): string {
   let sum = 0;
   length = length ? length : 4;
   while (length) {
-    let random = Math.random();
+    const random = Math.random();
     res += characters.charAt(random * characters.length);
     sum += characters.charAt(random * characters.length).charCodeAt(0);
     length--;
