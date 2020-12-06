@@ -42,6 +42,13 @@ route.get<{ id: string }>("/:id", (ctx) => {
     : "No paste for this id";
 });
 
+// Added the delete method
+route.delete<{ id: string }>("/:id", (ctx) => {
+  const key = ctx.params.id;
+  pastes.delete(key);
+  ctx.response.body = "Deleted the paste succesfully";
+});
+
 const app = new Application();
 
 app.use(route.routes());
