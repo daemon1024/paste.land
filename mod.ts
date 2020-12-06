@@ -46,7 +46,6 @@ route.get<{ id: string }>("/:id", (ctx) => {
 route.delete<{ id: string }>("/:id", (ctx) => {
   const key = ctx.params.id;
   pastes.delete(key);
-  ctx.response.status = 200;
   ctx.response.body = "Deleted the paste succesfully";
 });
 
