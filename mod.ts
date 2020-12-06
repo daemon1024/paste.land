@@ -1,5 +1,5 @@
 import { Application, Router, Status } from "https://deno.land/x/oak/mod.ts";
-import { randomId } from "./random.ts";
+import { randomId } from "./helpers/random.ts";
 
 interface Paste {
   content: string;
