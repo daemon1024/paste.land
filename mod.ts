@@ -37,17 +37,17 @@ route.post("/", async (ctx) => {
 
 // Display stored pastes for a particular id
 route.get<{ id: string }>("/:id", (ctx) => {
-  ctx.response.body =
-    ctx.params && pastes.has(ctx.params.id)
-      ? pastes.get(ctx.params.id)?.content
-      : "No paste for this id";
+  ctx.response.body = ctx.params && pastes.has(ctx.params.id)
+    ? pastes.get(ctx.params.id)?.content
+    : "No paste for this id";
 });
 
+// Added the delete method
 route.delete<{ id: string }>("/:id", (ctx) => {
-    pastes.delete(ctx.params.id);
-    ctx.response.status = 200;
-    ctx.response.body = "Deleted the paste succesfully"
-    // ctx.redirect("/");
+  let key = ctx.params.id;
+  pastes.delete(key);
+  ctx.response.status = 200;
+  ctx.response.body = "Deleted the paste succesfully";
 });
 
 const app = new Application();
@@ -57,4 +57,4 @@ app.use(route.allowedMethods());
 
 console.log("Listening on http://localhost:8000/");
 
-await app.listen({ port: 8000 });
+await app.listen({ port: 8000 }); 
