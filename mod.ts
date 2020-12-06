@@ -37,9 +37,17 @@ route.post("/", async (ctx) => {
 
 // Display stored pastes for a particular id
 route.get<{ id: string }>("/:id", (ctx) => {
-  ctx.response.body = ctx.params && pastes.has(ctx.params.id)
-    ? pastes.get(ctx.params.id)?.content
-    : "No paste for this id";
+  ctx.response.body =
+    ctx.params && pastes.has(ctx.params.id)
+      ? pastes.get(ctx.params.id)?.content
+      : "No paste for this id";
+});
+
+route.delete<{ id: string }>("/:id", (ctx) => {
+    pastes.delete(ctx.params.id);
+    ctx.response.status = 200;
+    ctx.response.body = "Deleted the paste succesfully"
+    // ctx.redirect("/");
 });
 
 const app = new Application();
