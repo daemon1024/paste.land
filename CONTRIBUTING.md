@@ -52,6 +52,12 @@ Having setup the project and tested its working, if you want to contribute to it
 git checkout -b "Name-of-the-branch"
 ```
 * Make changes according to the issues. Test the working of the changes.
+* Run
+```
+deno fmt
+```
+to format/prettify your code
+
 * Add the changes to staging area using the `git add` command :
 ```
 git add .
@@ -90,4 +96,4 @@ git push -u origin "Name-of-the-branch-from-step-1"
 
 ## Chat 🔊
 
-* Feel free to check out our [Telegram channel](https://t.me/paste.land). Always happy to help out!
+* Feel free to check out our [Telegram channel](https://t.me/paste_land). Always happy to help out!
