@@ -26,7 +26,7 @@ router.post("/", async (ctx) => {
     ctx.throw(Status.BadRequest, "Bad Request");
   }
   const body = ctx.request.body();
-  let paste: any;
+  let paste;
   if (body.type === "json") {
     const data = await body.value;
     paste = data.Content;
