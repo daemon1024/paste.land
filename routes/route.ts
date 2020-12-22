@@ -26,13 +26,28 @@ router.post("/", async (ctx) => {
     ctx.throw(Status.BadRequest, "Bad Request");
   }
   const body = ctx.request.body();
-  const paste = await body.value;
-  console.log(paste);
+  let paste: Paste | undefined;
+  if (body.type === "json") {
+    const data = await body.value;
+    console.log(data);
+    paste = data as Paste;
+  } else if (body.type === "text") {
+    const data = await body.value;
+    paste = {
+      content: data,
+    };
+  } else if (body.type === "form") {
+    for (const [key, value] of await body.value) {
+      if (key === "Content") {
+        paste = {
+          content: value,
+        };
+      }
+    }
+  }
   if (paste) {
     const id = getId();
-    pastes.set(String(id), {
-      content: paste as string,
-    });
+    pastes.set(String(id), paste);
     ctx.response.status = Status.OK;
     ctx.response.body = `Stored succesfully at http://localhost:8000/${id} `;
     return;
