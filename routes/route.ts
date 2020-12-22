@@ -26,16 +26,22 @@ router.post("/", async (ctx) => {
     ctx.throw(Status.BadRequest, "Bad Request");
   }
   const body = ctx.request.body();
-  let paste;
+  let paste: Paste | undefined;
   if (body.type === "json") {
     const data = await body.value;
-    paste = data.Content;
+    console.log(data);
+    paste = data as Paste;
   } else if (body.type === "text") {
-    paste = await body.value;
+    const data = await body.value;
+    paste = {
+      content: data,
+    };
   } else if (body.type === "form") {
     for (const [key, value] of await body.value) {
       if (key === "Content") {
-        paste = value;
+        paste = {
+          content: value,
+        };
       }
     }
   }
