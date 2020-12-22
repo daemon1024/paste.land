@@ -51,10 +51,9 @@ router.post("/", async (ctx) => {
 
 // Display stored pastes for a particular id
 router.get<{ id: string }>("/:id", (ctx) => {
-  ctx.response.body =
-    ctx.params && pastes.has(ctx.params.id)
-      ? pastes.get(ctx.params.id)?.content
-      : "No paste for this id";
+  ctx.response.body = ctx.params && pastes.has(ctx.params.id)
+    ? pastes.get(ctx.params.id)?.content
+    : "No paste for this id";
 });
 
 // Added the delete method
