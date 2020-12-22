@@ -26,13 +26,22 @@ router.post("/", async (ctx) => {
     ctx.throw(Status.BadRequest, "Bad Request");
   }
   const body = ctx.request.body();
-  const paste = await body.value;
-  console.log(paste);
+  let paste: any;
+  if (body.type === "json") {
+    const data = await body.value;
+    paste = data.Content;
+  } else if (body.type === "text") {
+    paste = await body.value;
+  } else if (body.type === "form") {
+    for (const [key, value] of await body.value) {
+      if (key === "Content") {
+        paste = value;
+      }
+    }
+  }
   if (paste) {
     const id = getId();
-    pastes.set(String(id), {
-      content: paste as string,
-    });
+    pastes.set(String(id), paste);
     ctx.response.status = Status.OK;
     ctx.response.body = `Stored succesfully at http://localhost:8000/${id} `;
     return;
@@ -42,9 +51,10 @@ router.post("/", async (ctx) => {
 
 // Display stored pastes for a particular id
 router.get<{ id: string }>("/:id", (ctx) => {
-  ctx.response.body = ctx.params && pastes.has(ctx.params.id)
-    ? pastes.get(ctx.params.id)?.content
-    : "No paste for this id";
+  ctx.response.body =
+    ctx.params && pastes.has(ctx.params.id)
+      ? pastes.get(ctx.params.id)?.content
+      : "No paste for this id";
 });
 
 // Added the delete method
