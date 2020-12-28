@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>paste.land</title>
+    <meta name="author" content="Barun Acharya" />
+    <meta
+      name="description"
+      content="paste.land is a paste tool made in deno. It aims to ease out sharing short code samples, logs, links, markdown notes or any other form of text."
+    />
+  </head>
+  <style>
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+    }
+  </style>
+  <body>
+    <form method="POST" action="/">
+      <textarea
+        name="Content"
+        placeholder="Paste your code here..."
+        rows="30"
+      ></textarea>
+      <input type="submit" value="Paste!" />
+    </form>
+  </body>
+</html>

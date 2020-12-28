@@ -20,6 +20,19 @@ router.get("/", (ctx) => {
   ctx.response.body = "Hello World!";
 });
 
+router.get("/web", async (ctx) => {
+  try {
+    await ctx.send(
+      {
+        root: `./static`,
+        path: "index.html",
+      },
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // Store pastes in a generated id
 router.post("/", async (ctx) => {
   if (!ctx.request.hasBody) {
