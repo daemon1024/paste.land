@@ -69,10 +69,26 @@ router.post("/", async (ctx) => {
 });
 
 // Display stored pastes for a particular id
-router.get<{ id: string }>("/:id", (ctx) => {
+router.get<{ id: string }>("/raw/:id", (ctx) => {
   ctx.response.body = ctx.params && pastes.has(ctx.params.id)
     ? pastes.get(ctx.params.id)?.content
     : "No paste for this id";
+});
+
+// Display stored pastes for a particular id with syntax highlighting
+router.get<{ id: string }>("/:id", (ctx) => {
+  const paste = ctx.params && pastes.has(ctx.params.id)
+    ? `<!DOCTYPE html>
+    <html>
+      <head>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+      </head>
+      <body>
+        <pre class="prettyprint">${pastes.get(ctx.params.id)?.content}</pre>
+      </body>
+    </html>`
+    : "No paste for this id";
+  ctx.response.body = paste;
 });
 
 // Added the delete method
