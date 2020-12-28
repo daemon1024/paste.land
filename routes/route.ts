@@ -62,7 +62,8 @@ router.post("/", async (ctx) => {
     const id = getId();
     pastes.set(String(id), paste);
     ctx.response.status = Status.OK;
-    ctx.response.body = `Stored succesfully at http://localhost:8000/${id} `;
+    ctx.response.body = `Stored succesfully at ${ctx.request.url.href}${id} `;
+    // ctx.response.redirect(`/${id}`)
     return;
   }
   ctx.throw(Status.BadRequest, "Bad Request");
