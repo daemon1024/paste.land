@@ -1,8 +1,7 @@
 Fixes #00 <!-- Replace `00` with the Issue Number -->
 
 ** Details **
-- change 1
-- change 2
+<!-- Insert details about what this whole PR aims to do -->
 
 # Additional Info
 - any additional information or context
