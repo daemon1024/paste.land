@@ -1,6 +1,6 @@
 Fixes #00 <!-- Replace `00` with the Issue Number -->
 
-# Proposed Changes
+** Details **
 - change 1
 - change 2
 
