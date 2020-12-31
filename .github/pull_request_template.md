@@ -1,6 +1,6 @@
 Fixes #00 <!-- Replace `00` with the Issue Number -->
 
-** Details **
+**Details**
 <!-- Insert details about what this whole PR aims to do -->
 
 **Checklist**
