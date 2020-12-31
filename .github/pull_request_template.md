@@ -1,5 +1,4 @@
-# Related Issue
-- issue goes here
+Fixes #00 <!-- Replace `00` with the Issue Number -->
 
 # Proposed Changes
 - change 1
